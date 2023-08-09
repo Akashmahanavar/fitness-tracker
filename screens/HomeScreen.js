@@ -5,20 +5,20 @@ import FitnessCards from '../components/FitnessCards'
 const HomeScreen = () => {
     return (
         <SafeAreaView style={styles.AndroidSafeArea}>
-            <View style={{ backgroundColor: '#cd8538', padding: 10, height: 200, width: "100%" }}>
+            <View style={{ backgroundColor: '#93469F', padding: 10, height: 200, width: "100%" }}>
                 <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18, textAlign: 'center' }}>HOME WORKOUT</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 20 }}>
                     <View>
-                        <Text style={{ color: 'white', fontWeight: 'bold', textAlign: 'center', fontSize: 18 }}>0</Text>
-                        <Text style={{ color: '#d0d0d0', fontWeight: 'bold', fontSize: 17 }}>WORKOUTS</Text>
+                        <Text style={styles.MetaDataValue}>0</Text>
+                        <Text style={styles.MetaData}>KCAL</Text>
                     </View>
                     <View>
-                        <Text style={{ color: 'white', fontWeight: 'bold', textAlign: 'center', fontSize: 18 }}>0</Text>
-                        <Text style={{ color: '#d0d0d0', fontWeight: 'bold', fontSize: 17 }}>KCAL</Text>
+                        <Text style={styles.MetaDataValue}>0</Text>
+                        <Text style={styles.MetaData}>WORKOUTS</Text>
                     </View>
                     <View>
-                        <Text style={{ color: 'white', fontWeight: 'bold', textAlign: 'center', fontSize: 18 }}>0</Text>
-                        <Text style={{ color: '#d0d0d0', fontWeight: 'bold', fontSize: 17 }}>MINS</Text>
+                        <Text style={styles.MetaDataValue}>0</Text>
+                        <Text style={styles.MetaData}>MINS</Text>
                     </View>
                 </View>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -39,5 +39,16 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "white",
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
+    },
+    MetaData: {
+        color: '#d0d0d0',
+        fontSize: 17,
+        fontWeight: 'bold',
+    },
+    MetaDataValue: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 })
