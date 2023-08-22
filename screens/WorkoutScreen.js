@@ -25,7 +25,7 @@ const WorkoutScreen = () => {
                                 <Text style={{ marginTop: 4, fontSize: 16, color: 'grey', }}>x{item.sets}</Text>
                             </View>
                             {completed.includes(item.name) ? (
-                                <AntDesign style={{ marginLeft: 40 }} name="checkcircle" size={24} color="green" />
+                                <AntDesign style={{ position: 'absolute', right: 10 }} name="checkcircle" size={24} color="green" />
                             ) : (
                                 null
                             )}
@@ -41,13 +41,13 @@ const WorkoutScreen = () => {
                     setCompleted([]);
                 }}
                 style={{
-                    backgroundColor: "blue",
+                    backgroundColor: "#14c8ec",
                     padding: 10,
                     marginLeft: "auto",
                     marginRight: "auto",
                     marginVertical: 20,
                     width: 120,
-                    borderRadius: 6,
+                    borderRadius: 20,
                 }}
             >
                 <Text

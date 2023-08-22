@@ -1,4 +1,4 @@
-import { StyleSheet, Text, SafeAreaView, Platform, StatusBar, Image, Pressable } from 'react-native'
+import { StyleSheet, Text, SafeAreaView, Platform, StatusBar, Image, Pressable, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { FitnessItems } from "../context";
@@ -28,67 +28,75 @@ const FitScreen = () => {
             <Image resizeMode='stretch' style={{ width: '100%', height: '50%' }} source={{ uri: current.image }} />
             <Text style={styles.MetaData}>{current.name}</Text>
             <Text style={styles.MetaDataValue}>x{current.sets}</Text>
-            {index + 1 >= excersise.length ? (
+            <View style={{ position: 'absolute', bottom: 30, width: '100%' }}>
                 <Pressable
-                    onPress={() => {
-                        navigation.navigate("Home");
+                    style={{
+                        flexDirection: "row",
+                        // alignItems: "center",
+                        // marginLeft: "auto",
+                        // marginRight: "auto",
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        marginBottom: 30,
                     }}
-                    style={styles.DoneContainer}
                 >
-                    <Text
-                        style={styles.Done}
+                    <Pressable
+                        disabled={index === 0}
+                        onPress={() => { setIndex(index - 1); }}
+                        style={styles.PreContainer}
                     >
-                        DONE
-                    </Text>
-                </Pressable>
-            ) : (
-                <Pressable
-                    onPress={() => {
-                        navigation.navigate("Rest");
-                        setCompleted([...completed, current.name]);
-                        setWorkout(workout + 1);
-                        setMinutes(minutes + 2.5);
-                        setCalories(calories + 6.3);
-                        setTimeout(() => {
-                            setIndex(index + 1);
-                        }, 9000);
-                    }}
-                    style={styles.DoneContainer}
-                >
-                    <Text
-                        style={styles.Done}
+                        <Text style={styles.Pre}>PREV</Text>
+                    </Pressable>
+                    <Pressable
+                        onPress={() => { index + 1 >= excersise.length ? navigation.navigate("Home") : setIndex(index + 1) }}
+                        style={styles.SkipContainer}
                     >
-                        DONE
-                    </Text>
+                        <Text style={styles.Skip}
+                        >
+                            SKIP
+                        </Text>
+                    </Pressable>
                 </Pressable>
-            )}
+                {index + 1 >= excersise.length ? (
+                    <Pressable
+                        onPress={() => {
+                            navigation.navigate("Home");
+                            setCompleted([...completed, current.name]);
+                            setWorkout(workout + 1);
+                            setMinutes(minutes + 2.5);
+                            setCalories(calories + 6.3);
+                        }}
+                        style={styles.DoneContainer}
+                    >
+                        <Text
+                            style={styles.Done}
+                        >
+                            DONE
+                        </Text>
+                    </Pressable>
+                ) : (
+                    <Pressable
+                        onPress={() => {
+                            navigation.navigate("Rest");
+                            setCompleted([...completed, current.name]);
+                            setWorkout(workout + 1);
+                            setMinutes(minutes + 2.5);
+                            setCalories(calories + 6.3);
+                            setTimeout(() => {
+                                setIndex(index + 1);
+                            }, 100);
+                        }}
+                        style={styles.DoneContainer}
+                    >
+                        <Text
+                            style={styles.Done}
+                        >
+                            DONE
+                        </Text>
+                    </Pressable>
+                )}
 
-            <Pressable
-                style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    marginTop: 50,
-                }}
-            >
-                <Pressable
-                    disabled={index === 0}
-                    onPress={() => { setIndex(index - 1); }}
-                    style={styles.SkipContainer}
-                >
-                    <Text style={styles.Skip}>PREV</Text>
-                </Pressable>
-                <Pressable
-                    onPress={() => { index + 1 >= excersise.length ? navigation.navigate("Home") : setIndex(index + 1) }}
-                    style={styles.SkipContainer}
-                >
-                    <Text style={styles.Skip}
-                    >
-                        SKIP
-                    </Text>
-                </Pressable>
-            </Pressable>
+            </View>
             <Ionicons name="ios-arrow-back-sharp" size={28} color="Black" style={styles.Icon} onPress={() => navigation.goBack()} />
         </SafeAreaView >
     )
@@ -126,7 +134,19 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     SkipContainer: {
-        backgroundColor: "green",
+        backgroundColor: "#93469f",
+        padding: 10,
+        borderRadius: 20,
+        marginHorizontal: 20,
+        width: 100,
+    },
+    Pre: {
+        color: "#93469f",
+        fontWeight: "bold",
+        textAlign: "center",
+    },
+    PreContainer: {
+        backgroundColor: "#e4cfe8",
         padding: 10,
         borderRadius: 20,
         marginHorizontal: 20,
@@ -139,12 +159,12 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     DoneContainer: {
-        backgroundColor: "blue",
+        backgroundColor: "#0ac166",
         marginLeft: "auto",
         marginRight: "auto",
         marginTop: 50,
-        borderRadius: 18,
+        borderRadius: 28,
         padding: 10,
-        width: 150,
+        width: 120,
     }
 })
