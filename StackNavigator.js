@@ -7,6 +7,7 @@ import HomeScreen from './screens/HomeScreen';
 import WorkoutScreen from './screens/WorkoutScreen';
 import FitScreen from './screens/FitScreen';
 import RestScreen from './screens/RestScreen';
+import OnBoardScreen from './screens/OnBoardScreen';
 
 const StackNavigator = () => {
 
@@ -17,6 +18,7 @@ const StackNavigator = () => {
             <Stack.Navigator screenOptions={{
                 headerShown: false
             }}>
+                <Stack.Screen name="Onboard" component={OnBoardScreen} />
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Workout" component={WorkoutScreen} />
                 <Stack.Screen name="Fit" component={FitScreen} />
