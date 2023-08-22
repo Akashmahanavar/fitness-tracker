@@ -2,6 +2,8 @@ import { StyleSheet, Text, SafeAreaView, Platform, StatusBar, Image, Pressable }
 import React, { useContext, useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { FitnessItems } from "../context";
+import { Ionicons } from '@expo/vector-icons';
+
 
 const FitScreen = () => {
     const route = useRoute();
@@ -87,6 +89,7 @@ const FitScreen = () => {
                     </Text>
                 </Pressable>
             </Pressable>
+            <Ionicons name="ios-arrow-back-sharp" size={28} color="Black" style={styles.Icon} onPress={() => navigation.goBack()} />
         </SafeAreaView >
     )
 }
@@ -98,6 +101,12 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         flex: 1,
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    },
+    Icon: {
+        position: 'absolute',
+        left: 20,
+        top: 15,
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
     },
     MetaData: {
         color: '#d0d0d0',

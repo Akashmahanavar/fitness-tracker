@@ -1,23 +1,29 @@
 import { SafeAreaView, StyleSheet, Text, View, Platform, StatusBar, Image, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import FitnessCards from '../components/FitnessCards'
+import { FitnessItems } from '../context'
 
 const HomeScreen = () => {
+    const {
+        minutes,
+        calories,
+        workout,
+    } = useContext(FitnessItems);
     return (
         <SafeAreaView style={styles.AndroidSafeArea}>
             <View style={{ backgroundColor: '#93469F', padding: 10, height: 200, width: "100%" }}>
                 <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18, textAlign: 'center' }}>HOME WORKOUT</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 20 }}>
                     <View>
-                        <Text style={styles.MetaDataValue}>0</Text>
+                        <Text style={styles.MetaDataValue}>{calories}</Text>
                         <Text style={styles.MetaData}>KCAL</Text>
                     </View>
                     <View>
-                        <Text style={styles.MetaDataValue}>0</Text>
+                        <Text style={styles.MetaDataValue}>{workout}</Text>
                         <Text style={styles.MetaData}>WORKOUTS</Text>
                     </View>
                     <View>
-                        <Text style={styles.MetaDataValue}>0</Text>
+                        <Text style={styles.MetaDataValue}>{minutes}</Text>
                         <Text style={styles.MetaData}>MINS</Text>
                     </View>
                 </View>
