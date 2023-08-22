@@ -1,11 +1,16 @@
 import { Image, Platform, Pressable, SafeAreaView, StatusBar, StyleSheet, Text, View, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
+import { FitnessItems } from "../context";
 import { useNavigation, useRoute } from '@react-navigation/native'
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, Ionicons } from '@expo/vector-icons';
 
 const WorkoutScreen = () => {
     const route = useRoute();
     const navigation = useNavigation();
+    const {
+        completed,
+        setCompleted,
+    } = useContext(FitnessItems);
     return (
         <SafeAreaView style={styles.AndroidSafeArea}>
             <Image style={{ width: '100%', height: 200 }} source={{ uri: route.params.image }} />
@@ -19,14 +24,22 @@ const WorkoutScreen = () => {
                                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.name}</Text>
                                 <Text style={{ marginTop: 4, fontSize: 16, color: 'grey', }}>x{item.sets}</Text>
                             </View>
+                            {completed.includes(item.name) ? (
+                                <AntDesign style={{ marginLeft: 40 }} name="checkcircle" size={24} color="green" />
+                            ) : (
+                                null
+                            )}
                         </Pressable>
                     )
                 }
             </ScrollView>
             <Pressable
-                onPress={() => navigation.navigate('Fit', {
-                    excersises: route.params.excersises
-                })}
+                onPress={() => {
+                    navigation.navigate('Fit', {
+                        excersises: route.params.excersises
+                    })
+                    setCompleted([]);
+                }}
                 style={{
                     backgroundColor: "blue",
                     padding: 10,

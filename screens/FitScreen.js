@@ -23,7 +23,7 @@ const FitScreen = () => {
 
     return (
         <SafeAreaView style={styles.AndroidSafeArea}>
-            <Image resizeMode='contain' style={{ width: '100%', height: '50%' }} source={{ uri: current.image }} />
+            <Image resizeMode='stretch' style={{ width: '100%', height: '50%' }} source={{ uri: current.image }} />
             <Text style={styles.MetaData}>{current.name}</Text>
             <Text style={styles.MetaDataValue}>x{current.sets}</Text>
             {index + 1 >= excersise.length ? (
