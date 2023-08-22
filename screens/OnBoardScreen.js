@@ -60,7 +60,7 @@ const OnBoardScreen = () => {
                     The best fitness app for everyone
                 </Text>
                 <Pressable
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={() => navigation.navigate('Ad')}
                     style={{
                         position: "absolute",
                         bottom: 100,
