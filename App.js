@@ -1,9 +1,11 @@
 import * as React from "react";
-import HomeScreen from "./screens/HomeScreen";
 import StackNavigator from "./StackNavigator";
+import { FitnessContext } from "./context";
 
 export default function App() {
   return (
-    <StackNavigator/>
+    <FitnessContext>
+      <StackNavigator />
+    </FitnessContext>
   );
 }
