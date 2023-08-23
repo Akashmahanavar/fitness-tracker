@@ -9,6 +9,7 @@ import FitScreen from './screens/FitScreen';
 import RestScreen from './screens/RestScreen';
 import OnBoardScreen from './screens/OnBoardScreen';
 import AdvertisingScreen from './screens/AdvertisingScreen';
+import LoginScreen from './screens/LoginScreen';
 
 const StackNavigator = () => {
 
@@ -20,6 +21,7 @@ const StackNavigator = () => {
                 headerShown: false
             }}>
                 <Stack.Screen name="Onboard" component={OnBoardScreen} />
+                <Stack.Screen name='Login' component={LoginScreen} />
                 <Stack.Screen name='Ad' component={AdvertisingScreen} />
                 <Stack.Screen name="Home" component={HomeScreen} />
                 <Stack.Screen name="Workout" component={WorkoutScreen} />

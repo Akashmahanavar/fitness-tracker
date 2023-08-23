@@ -32,7 +32,7 @@ const AdvertisingScreen = () => {
             }}
                 onPress={() => {
                     if (index + 1 >= 3)
-                        navigation.navigate('Home')
+                        navigation.navigate('Login')
                     else
                         setIndex(index + 1);
                 }
