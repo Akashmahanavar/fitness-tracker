@@ -15,7 +15,7 @@ const AdvertisingScreen = () => {
                 }}
                 style={{ width: "100%", height: 420 }}
             />
-            <Text style={{ fontSize: 24, width: 200, alignSelf: 'center', textAlign: 'center', marginTop: 20, fontFamily: 'Times New Roman' }}>{advertise[index].text}</Text>
+            <Text style={{ fontSize: 24, width: 200, alignSelf: 'center', textAlign: 'center', marginTop: 20 }}>{advertise[index].text}</Text>
             <View style={{ flexDirection: 'row', gap: 10, alignSelf: 'center', bottom: 150, position: 'absolute' }}>
                 {
                     advertise.map((item, i) =>

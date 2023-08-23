@@ -7,7 +7,9 @@ import {
     ImageBackground,
     Pressable,
 } from "react-native";
-import React from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 const OnBoardScreen = () => {
@@ -15,13 +17,20 @@ const OnBoardScreen = () => {
     const alt =
         "https://e0.pxfuel.com/wallpapers/266/440/desktop-wallpaper-gym-therapy-thoughts-iron-pickshitup-alone-train-fitness-graphy-gym-graphy-gym-fitness-iphone-dark-gym-thumbnail.jpg";
     const image = { uri: alt };
+
+    useEffect(() => {
+        AsyncStorage.getItem('emailId').then(value => {
+            if (value === 'akash@gmail.com')
+                navigation.navigate('Home');
+        })
+    }, []);
+
     return (
         <SafeAreaView style={styles.AndroidSafeArea}>
             <ImageBackground
                 source={image}
                 resizeMode="cover"
                 style={styles.image}
-                height="100%"
             >
                 <Text
                     style={{
@@ -41,7 +50,7 @@ const OnBoardScreen = () => {
                         bottom: 200,
                         left: 20,
                         fontSize: 38,
-                        color: "#50C878",
+                        color: "#93469f",
                         fontWeight: "900",
                     }}
                 >
@@ -68,7 +77,7 @@ const OnBoardScreen = () => {
                         borderRadius: 22,
                         paddingHorizontal: 70,
                         alignSelf: "center",
-                        backgroundColor: "#0ac166",
+                        backgroundColor: "#93469f",
                     }}
                 >
                     <Text style={{ color: "#fff", fontSize: 16, fontWeight: "900" }}>

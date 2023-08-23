@@ -4,6 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const LoginScreen = () => {
     const [emailId, setEmailId] = useState("");
@@ -14,6 +15,7 @@ const LoginScreen = () => {
         if (emailId === 'akash@gmail.com') {
             if (Password === 'admin') {
                 navigation.navigate('Home')
+                AsyncStorage.setItem('emailId', 'akash@gmail.com');
             }
             else
                 Alert.alert('Password Incorrect');
@@ -22,8 +24,8 @@ const LoginScreen = () => {
             Alert.alert('Invalid Username')
     }
     return (
-        <View style={{ alignItems: 'center', flex: 1, gap: 20, display: 'flex', justifyContent: 'center' }}>
-            <Text style={{ position: 'absolute', alignSelf: 'center', top: 100, fontSize: 40, width: '85%', textAlign: 'center', fontFamily: 'Audiowide', fontWeight: 'bold' }}>Log in to your Account</Text>
+        <View style={{ alignItems: 'center', flex: 1, gap: 20, justifyContent: 'center' }}>
+            <Text style={{ alignSelf: 'center', fontSize: 40, width: '85%', textAlign: 'center', fontWeight: 'bold', marginBottom: 50 }}>Log in to your Account</Text>
             <View style={styles.Container}>
                 <MaterialIcons name="email" size={24} color="#93469f" style={{ marginHorizontal: 5 }} />
                 <TextInput
@@ -59,9 +61,9 @@ const LoginScreen = () => {
                 <View style={{ flex: 1, height: 1, backgroundColor: '#DCDCDC' }} />
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20 }}>
-                <AntDesign name="apple1" size={24} color="black" />
-                <AntDesign name="google" color='red' size={24} />
                 <FontAwesome5 name="facebook" size={24} color="#1877f2" />
+                <AntDesign name="google" color='red' size={24} />
+                <AntDesign name="apple1" size={24} color="black" />
             </View>
         </View>
     )
@@ -74,6 +76,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         padding: 10,
         backgroundColor: '#ececec',
-        borderRadius: 10
+        borderRadius: 10,
+        width: 250
     }
 })

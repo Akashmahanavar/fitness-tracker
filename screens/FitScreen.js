@@ -32,9 +32,6 @@ const FitScreen = () => {
                 <Pressable
                     style={{
                         flexDirection: "row",
-                        // alignItems: "center",
-                        // marginLeft: "auto",
-                        // marginRight: "auto",
                         display: 'flex',
                         justifyContent: 'space-between',
                         marginBottom: 30,
@@ -64,7 +61,7 @@ const FitScreen = () => {
                             setCompleted([...completed, current.name]);
                             setWorkout(workout + 1);
                             setMinutes(minutes + 2.5);
-                            setCalories(calories + 6.3);
+                            setCalories(calories + 10);
                         }}
                         style={styles.DoneContainer}
                     >
@@ -81,7 +78,7 @@ const FitScreen = () => {
                             setCompleted([...completed, current.name]);
                             setWorkout(workout + 1);
                             setMinutes(minutes + 2.5);
-                            setCalories(calories + 6.3);
+                            setCalories(calories + 10);
                             setTimeout(() => {
                                 setIndex(index + 1);
                             }, 100);
@@ -97,7 +94,7 @@ const FitScreen = () => {
                 )}
 
             </View>
-            <Ionicons name="ios-arrow-back-sharp" size={28} color="Black" style={styles.Icon} onPress={() => navigation.goBack()} />
+            <Ionicons name="ios-arrow-back-sharp" size={28} style={styles.Icon} onPress={() => navigation.goBack()} />
         </SafeAreaView >
     )
 }
